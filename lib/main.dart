@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'default_list/widget/list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,15 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                'Hi',
-              ),
-            ],
-          ),
-        ));
+        body: const Center(child: ListWidget()));
   }
 }
