@@ -1,16 +1,9 @@
 # lazy_loading_list_view
 
-A new Flutter project.
+Issue
+- As per items in listView with counter are potentially reassigned to its default value as its storing count @State on each ListWidget, List are potentially lazily-loaded, depending on the os, length of the list, number of items on the screen, etc.
 
-## Getting Started
+- If a list item is loaded and then its state is changed, that state is not reassigned to the item if that item has been since unloaded/reloaded into the List.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Solution - To persist data for one app cycle
+- Instead of storing count @State on each List row, you could move the state to the parent view, which wouldn't be unloaded: by the use model class
