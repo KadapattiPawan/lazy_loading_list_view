@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lazy_loading_list_view/default_list/model/list_model.dart';
 
 class ListWidget extends StatelessWidget {
   const ListWidget({super.key});
@@ -6,7 +7,7 @@ class ListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var list = <Widget>[];
     for (var i = 0; i <= 100; i++) {
-      list.add(const ListItemWidget());
+      list.add(ListItemWidget(model: ListModel(count: 0)));
     }
     return ListView.builder(
         itemCount: list.length, itemBuilder: (context, index) => list[index]);
@@ -14,13 +15,17 @@ class ListWidget extends StatelessWidget {
 }
 
 class ListItemWidget extends StatefulWidget {
-  const ListItemWidget({super.key});
+  final ListModel model;
+
+  const ListItemWidget({
+    super.key,
+    required this.model,
+  });
   @override
   State<ListItemWidget> createState() => _ListItemWidgetState();
 }
 
 class _ListItemWidgetState extends State<ListItemWidget> {
-  var count = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,14 +36,14 @@ class _ListItemWidgetState extends State<ListItemWidget> {
             Expanded(
                 child: Center(
                     child: Text(
-              count.toString(),
+              widget.model.count.toString(),
               style: Theme.of(context).textTheme.headlineSmall,
             ))),
             MaterialButton(
               color: Theme.of(context).primaryColorDark,
               onPressed: () {
                 setState(() {
-                  count++;
+                  widget.model.increaseCounter();
                 });
               },
               child:
