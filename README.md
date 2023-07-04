@@ -7,3 +7,5 @@ Issue
 
 Solution - To persist data for one app cycle
 - Instead of storing count @State on each List row, you could move the state to the parent view, which wouldn't be unloaded: by the use model class
+
+- As view should not be aware or responsible for app logic, by using model class logic layer can be separeted away from view and easy to maintain

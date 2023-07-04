@@ -13,6 +13,13 @@ class ListItemWidget extends StatefulWidget {
 }
 
 class _ListItemWidgetState extends State<ListItemWidget> {
+
+  /*
+   Moving count @state to the parent view present within ListItemWidget as its getting reassigned to initial state '0'
+   ..this happens when ever list items are unloaded (hide away from user view/screen) and reloaded when scrolling back again to view
+   ... view should not be responsible of state of app, should be separated 
+  */
+
   @override
   Widget build(BuildContext context) {
     return Container(
