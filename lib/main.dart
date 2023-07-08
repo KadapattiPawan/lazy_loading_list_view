@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'default_list/widget/list.dart';
+import 'default_list/widget/split_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: const Center(child: ListWidget()));
+        // body: const Center(child: ListWidget()));
+        body: const Center(child: SplitScreen()));
   }
 }
